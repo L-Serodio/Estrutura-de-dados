@@ -1,23 +1,26 @@
+package lista_generica;
 
-public class ListaEstatica {
+@SuppressWarnings("unchecked")
 
-	private int[] info;
+public class ListaEstatica<ClasseParametrizada> {
+
+	private ClasseParametrizada[] info;
 	private int tamanho;
 
 	public ListaEstatica() {
-		info = new int[10];
+		info = (ClasseParametrizada[]) new Object[10];
 		tamanho = 0;
 	}
 
 	private void redimensionar() {
-		int[] novo = new int[tamanho + 10];
+		ClasseParametrizada[] novo = (ClasseParametrizada[]) new Object[tamanho + 10];
 		for (int i = 0; i < tamanho; i++) {
 			novo[i] = info[i];
 		}
 		info = novo;
 	}
 
-	public void inserir(int valor) {
+	public void inserir(ClasseParametrizada valor) {
 		if (tamanho == info.length)
 			redimensionar();
 		info[tamanho] = valor;
@@ -30,7 +33,7 @@ public class ListaEstatica {
 		}
 	}
 
-	public int buscar(int valor) {
+	public int buscar(ClasseParametrizada valor) {
 		for (int i = 0; i < tamanho; i++) {
 			if (info[i] == valor) {
 				return i;
@@ -39,21 +42,21 @@ public class ListaEstatica {
 		return -1;
 	}
 
-	public void retirar(int valor) {
+	public void retirar(ClasseParametrizada valor) {
 		int pos = buscar(valor);
 		if (pos != -1) {
-			for (int i = pos; i < tamanho-1; i++)
+			for (int i = pos; i < tamanho - 1; i++)
 				info[i] = info[i + 1];
 			tamanho--;
 		}
 	}
 
 	public void liberar() {
-		info = new int[10];
+		info = (ClasseParametrizada[]) new Object[10];
 		tamanho = 0;
 	}
 
-	public int obterElemento(int posicao) {
+	public ClasseParametrizada obterElemento(int posicao) {
 		if (posicao < 0 || posicao > tamanho)
 			throw new IndexOutOfBoundsException();
 		return info[posicao];
@@ -67,13 +70,24 @@ public class ListaEstatica {
 		return this.tamanho;
 	}
 
+	public void inverter() {
+		int j = tamanho - 1;
+		ClasseParametrizada tmp;
+		for (int i = 0; i < tamanho/2; i++) {
+			tmp = info[i];
+			info[i] = info[j];
+			info[j] = tmp;
+			j--;
+		}
+	}
+
 	@Override
 	public String toString() {
 		String str = "";
 		for (int i = 0; i < tamanho; i++) {
 			if (i > 0 && i != tamanho)
 				str += ",";
-			str += info[i];
+			str += info[i].toString();
 		}
 		return str;
 	}
