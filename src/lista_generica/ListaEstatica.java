@@ -20,10 +20,10 @@ public class ListaEstatica<ClasseParametrizada> {
 		info = novo;
 	}
 
-	public void inserir(ClasseParametrizada valor) {
+	public void inserir(ClasseParametrizada dado) {
 		if (tamanho == info.length)
 			redimensionar();
-		info[tamanho] = valor;
+		info[tamanho] = dado;
 		tamanho++;
 	}
 
@@ -33,17 +33,17 @@ public class ListaEstatica<ClasseParametrizada> {
 		}
 	}
 
-	public int buscar(ClasseParametrizada valor) {
+	public int buscar(ClasseParametrizada dado) {
 		for (int i = 0; i < tamanho; i++) {
-			if (info[i] == valor) {
+			if (info[i] == dado) {
 				return i;
 			}
 		}
 		return -1;
 	}
 
-	public void retirar(ClasseParametrizada valor) {
-		int pos = buscar(valor);
+	public void retirar(ClasseParametrizada dado) {
+		int pos = buscar(dado);
 		if (pos != -1) {
 			for (int i = pos; i < tamanho - 1; i++)
 				info[i] = info[i + 1];
