@@ -83,12 +83,12 @@ public class ListaEncadeada<T> {
 		String str = "";
 		NoLista<T> p = primeiro;
 		while (p != null) {
-			if (p.getProximo().equals(null)) {
+			if (p.equals(primeiro)) {
 				str += p.getInfo();
-				return str;
+			} else {
+				str += ", " + p.getInfo();
 			}
-			str += p.getInfo() + ", ";
-			p = p.getProximo();
+			p = p.getProximo();	
 		}
 		return str;
 	}
