@@ -23,10 +23,10 @@ public class ListaEncadeada<T> {
 		return primeiro == null;
 	}
 
-	public NoLista<T> buscar(T info) {
+	public NoLista<T> buscar(T valor) {
 		NoLista<T> p = primeiro;
 		while (p != null) {
-			if (p.getInfo().equals(info)) {
+			if (p.getInfo().equals(valor)) {
 				return p;
 			}
 			p = p.getProximo();
@@ -34,17 +34,17 @@ public class ListaEncadeada<T> {
 		return null;
 	}
 
-	public void retirar(T info) {
+	public void retirar(T valor) {
 		NoLista<T> p = primeiro;
 		NoLista<T> anterior = null;
-		while (p != null && !p.getInfo().equals(info)) {
+		while (p != null && !p.getInfo().equals(valor)) {
 			anterior = p;
 			p = p.getProximo();
 		}
 
 		if (p != null) {
-			if (anterior == null) {
-				primeiro = p.getProximo();
+			if (p == primeiro) {
+				primeiro = primeiro.getProximo();
 			} else {
 				anterior.setProximo(p.getProximo());
 			}
@@ -84,9 +84,9 @@ public class ListaEncadeada<T> {
 		NoLista<T> p = primeiro;
 		while (p != null) {
 			if (p.equals(primeiro)) {
-				str += p.getInfo();
+				str += p.getInfo().toString();
 			} else {
-				str += ", " + p.getInfo();
+				str += ", " + p.getInfo().toString();
 			}
 			p = p.getProximo();	
 		}
