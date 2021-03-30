@@ -73,14 +73,14 @@ class ListaDuplaTest {
 		lista.inserir(15);
 		lista.inserir(20);
 		lista.liberar();
-		assertEquals(lista.buscar(20).getAnterior(), null);
-		assertEquals(lista.buscar(20).getProximo(), null);
-		assertEquals(lista.buscar(15).getProximo(), null);
-		assertEquals(lista.buscar(15).getAnterior(), null);
-		assertEquals(lista.buscar(10).getProximo(), null);
-		assertEquals(lista.buscar(10).getAnterior(), null);
-		assertEquals(lista.buscar(5).getProximo(), null);
-		assertEquals(lista.buscar(5).getAnterior(), null);
+		assertNull(lista.buscar(20));
+		assertNull(lista.buscar(20));
+		assertNull(lista.buscar(15));
+		assertNull(lista.buscar(15));
+		assertNull(lista.buscar(10));
+		assertNull(lista.buscar(10));
+		assertNull(lista.buscar(5));
+		assertNull(lista.buscar(5));
 	} 
 
 }

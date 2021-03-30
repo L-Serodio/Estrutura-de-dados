@@ -25,6 +25,7 @@ public class ListaDupla<T> {
 
 	public NoListaDupla<T> buscar(T valor) {
 		NoListaDupla<T> p = primeiro;
+		
 		while (p != null) {
 			if (p.getInfo().equals(valor)) {
 				return p;
@@ -36,6 +37,7 @@ public class ListaDupla<T> {
 
 	public void retirar(T valor) {
 		NoListaDupla<T> p = buscar(valor);
+		
 		if (p != null) {
 			if (primeiro.equals(p)) {
 				primeiro = p.getProximo();
@@ -52,12 +54,13 @@ public class ListaDupla<T> {
 
 	public void exibirOrdemInversa() {
 		NoListaDupla<T> p = primeiro;
+		
 		while(p.getProximo() != null) {
 			p = p.getProximo();
 		}
 		
 		while(p != primeiro) {
-			System.out.println(p + "");
+			System.out.println(p);
 			p = p.getAnterior();
 		}
 	}
@@ -65,12 +68,12 @@ public class ListaDupla<T> {
 	public void liberar() {
 		NoListaDupla<T> p = primeiro;
 		while (p != null) {
+			p.setAnterior(null);
 			NoListaDupla<T> noTemp = p.getProximo();
 			p.setProximo(null);
-			p.setAnterior(null);
 			p = noTemp;
 		}
-		
+		primeiro = null;
 	}
 
 	@Override
