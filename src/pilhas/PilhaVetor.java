@@ -8,8 +8,8 @@ public class PilhaVetor<T> implements IPilha<T> {
 	private int tamanho;
 	
 	public PilhaVetor(int limite) {
-		this.limite = limite;
 		info = (T[]) new Object[limite];
+		this.limite = limite;
 		tamanho = 0;
 	}
 	
@@ -45,10 +45,13 @@ public class PilhaVetor<T> implements IPilha<T> {
 
 	@Override
 	public void liberar() {
-		while(tamanho != 0) {
-			pop();
+		try {
+			while(true) {
+				pop();
+			}
+		} catch (PilhaVaziaException e) {
+			throw new PilhaVaziaException("Pilha está vazia");
 		}
-		info = (T[]) new Object[limite];
 	}
 	
 	@Override 

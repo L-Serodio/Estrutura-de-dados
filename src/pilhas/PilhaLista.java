@@ -1,7 +1,6 @@
 package pilhas;
 
 import lista_dinamica.ListaEncadeada;
-import lista_dinamica.NoLista;
 
 public class PilhaLista<T> extends ListaEncadeada<T> implements IPilha<T> {
 
@@ -33,11 +32,8 @@ public class PilhaLista<T> extends ListaEncadeada<T> implements IPilha<T> {
 
 	@Override
 	public void liberar() {
-		NoLista<T> no = lista.getPrimeiro();
-		while(no != null) {
-			NoLista<T> noTemp = no.getProximo();
-			this.pop();
-			no = noTemp;
+		while(!estaVazia()) {
+			pop();
 		}
 	}
 	
