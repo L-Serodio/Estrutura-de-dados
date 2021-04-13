@@ -10,6 +10,28 @@ class ListaEstaticaTest {
 	ListaEstatica<Integer> lista = new ListaEstatica<Integer>();
 
 	@Test
+	void test_prova_questao01() {
+		for(int i = 1; i <= 11; i++) {
+			lista.inserir(i);
+		}
+		
+		for(int i = 1; i <= 10; i++) {
+			lista.retirar(i);
+		}
+		
+		assertEquals(1, lista.getTamanho());
+	}
+	
+	@Test
+	void test_prova_questao03() {
+		for(int i = 1; i <= 50; i++) {
+			lista.inserir(i);
+		}
+		
+		assertEquals(50, lista.getTamanho());
+	}
+	
+	@Test
 	void test_inserir_caso01() {
 		lista.inserir(5);
 		lista.inserir(10);

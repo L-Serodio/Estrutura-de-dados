@@ -6,6 +6,22 @@ import org.junit.jupiter.api.Test;
 
 class PilhaVetorTest {
 	
+	
+	
+	@Test
+	void testPilhaProva() {
+		PilhaVetor<Integer> pilha = new PilhaVetor<Integer>(10);
+		pilha.push(10);
+		pilha.push(20);
+		pilha.push(30);
+		pilha.push(40);
+		pilha.pop();
+		pilha.pop();
+		pilha.push(pilha.peek());
+		pilha.push(50);
+		assertEquals("", pilha.toString());
+	}
+	
 	@Test
 	void testEstaVazia() {
 		PilhaVetor<Integer> pilha = new PilhaVetor<Integer>(5);

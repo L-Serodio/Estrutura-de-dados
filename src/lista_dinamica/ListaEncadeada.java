@@ -3,9 +3,11 @@ package lista_dinamica;
 public class ListaEncadeada<T> {
 
 	private NoLista<T> primeiro;
+	private NoLista<T> ultimo;
 
 	public ListaEncadeada() {
 		primeiro = null;
+		ultimo = null;
 	}
 
 	public NoLista<T> getPrimeiro() {
@@ -16,9 +18,26 @@ public class ListaEncadeada<T> {
 		NoLista<T> novo = new NoLista<T>();
 		novo.setInfo(info);
 		novo.setProximo(primeiro);
+		
+		if(estaVazia()) {
+			ultimo = novo;
+		}
+		
 		primeiro = novo;
 	}
 
+	public void inserirNoFinal(T info) {
+		NoLista<T> novo = new NoLista<>();
+		novo.setInfo(info);
+		novo.setProximo(null);
+		if(estaVazia())
+			primeiro = novo;
+		else
+			ultimo.setProximo(novo);
+		
+		ultimo = novo;
+	}
+	
 	public boolean estaVazia() {
 		return primeiro == null;
 	}
@@ -37,6 +56,7 @@ public class ListaEncadeada<T> {
 	public void retirar(T valor) {
 		NoLista<T> p = primeiro;
 		NoLista<T> anterior = null;
+		
 		while (p != null && !p.getInfo().equals(valor)) {
 			anterior = p;
 			p = p.getProximo();
@@ -48,6 +68,10 @@ public class ListaEncadeada<T> {
 			} else {
 				anterior.setProximo(p.getProximo());
 			}
+		}
+		
+		if(p == ultimo) {
+			ultimo = anterior;
 		}
 	}
 

@@ -46,7 +46,7 @@ public class PilhaVetor<T> implements IPilha<T> {
 	@Override
 	public void liberar() {
 		try {
-			while(true) {
+			while(!estaVazia()) {
 				pop();
 			}
 		} catch (PilhaVaziaException e) {
@@ -66,11 +66,8 @@ public class PilhaVetor<T> implements IPilha<T> {
 	}
 	
 	public void concatenar(PilhaVetor<T> p) {
-		int tamanhoP = p.tamanho;
-		p.tamanho = 0;
-		while(p.tamanho != tamanhoP) {
-			p.tamanho++;
-			this.push(p.peek());
+		for (int i = 0; i < p.tamanho; i++) {
+			this.push(p.info[i]);
 		}
 	}
 }

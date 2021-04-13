@@ -16,6 +16,10 @@ public class FilaVetor<T> implements IFila<T> {
 		this.inicio = 0;
 	}
 	
+	public int getInicio() {
+		return inicio;
+	}
+	
 	@Override
 	public void inserir(T valor) {
 		if(tamanho == limite) {
@@ -64,12 +68,33 @@ public class FilaVetor<T> implements IFila<T> {
 	}
 	
 	public FilaVetor<T> criarFilaConcatenada(FilaVetor<T> f2) {
-		return f2; //TO-DO
+		FilaVetor<T> f3 = new FilaVetor<T>(this.limite + f2.limite);
+		
+		int indice;
+		
+		indice = this.inicio;
+		for (int i = 0; i < this.tamanho; i++) {
+			f3.inserir(this.info[indice]);
+			indice = (indice + 1) % this.limite;
+		}
+		
+		indice = f2.inicio;
+		for (int i = 0; i < f2.tamanho; i++) {
+			f3.inserir(f2.info[indice]);
+			indice = (indice + 1) % f2.limite;
+		}
+		
+		return f3;
 	}
 	
 	@Override
 	public String toString() {
-		return ""; //TO-DO
+		String str = "";
+		for (int i = 0; i <= tamanho; i++) {
+			str += info[i] + ",";
+		}
+		
+		return str;
 	}
 
 }

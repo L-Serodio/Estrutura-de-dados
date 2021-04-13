@@ -16,6 +16,21 @@ public class ListaEstatica {
 		}
 		info = novo;
 	}
+	
+	public void inserirProva(int valor) {
+		if (tamanho == info.length)
+			redimensionar();
+		
+		for (int i = 0; i < tamanho-1; i++) {
+			if(info[i+1] > valor) {
+				info[i] = valor;
+				break;
+			}
+		}
+		
+		info[tamanho] = valor;
+		tamanho++;
+	}
 
 	public void inserir(int valor) {
 		if (tamanho == info.length)
