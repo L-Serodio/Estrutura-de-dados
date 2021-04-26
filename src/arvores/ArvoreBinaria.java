@@ -17,28 +17,38 @@ public class ArvoreBinaria<T> {
 	}
 	
 	public boolean pertence(T info) {
-		return true; //TODO
+		return pertence(raiz, info);
 	}
 	
 	private boolean pertence(NoArvoreBinaria<T> no, T info) {
-		return true; //TODO
+		if(no == null)
+			return false;
+		
+		return (no.getInfo() == info) || pertence(no.getEsquerda(), info) || pertence(no.getDireita(), info);
 	}
 	
 	@Override
 	public String toString() {
-		return ""; //TODO
+		return arvorePre(raiz);
 	}
 	
 	private String arvorePre(NoArvoreBinaria<T> no) {
-		return ""; //TODO
+		if(no == null)
+			return "<>";
+		
+		return "<" + no.getInfo() + arvorePre(no.getEsquerda()) + arvorePre(no.getDireita()) + ">";
 	}
 	
 	public int contarNos() {
-		return 0; //TODO
+		return contarNos(raiz);
 	}
 	
 	private int contarNos(NoArvoreBinaria<T> no) {
-		return 0; //TODO
+		if(no == null) return 0;
+		
+		int countEsq = contarNos(no.getEsquerda());
+		int countDir = contarNos(no.getDireita());
+		return countEsq + countDir + 1;
 	}
 	
 }
