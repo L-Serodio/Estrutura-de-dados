@@ -43,6 +43,10 @@ public abstract class ListaAbstract<T> {
 		}
 	}
 
+	public int getLimite() {
+		return info.length;
+	}
+	
 	public void liberar() {
 		info = (T[]) new Object[10];
 		tamanho = 0;
