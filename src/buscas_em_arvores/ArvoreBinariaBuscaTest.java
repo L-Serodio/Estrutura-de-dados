@@ -66,4 +66,5 @@ class ArvoreBinariaBuscaTest {
 		String expected = "<250<41<26<><>><72<55<43<><>><60<><>>><90<78<74<><>><>><92<><>>>>><>>";
 		assertEquals(expected, arvore.toString());
 	}
+	
 }

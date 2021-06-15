@@ -101,5 +101,39 @@ class ListaOrdenadaTest {
 		lista.inserir(100);
 		assertEquals(-1, lista.buscar(85));
 	}
+	
+	@Test
+	void test_prova_caso07() {
+		ListaOrdenada<Integer> lista = new ListaOrdenada<Integer>();
+		lista.inserir(1);
+		lista.inserir(17);
+		lista.inserir(20);
+		lista.inserir(33);
+		lista.inserir(43);
+		lista.inserir(75);
+		lista.inserir(80);
+		lista.inserir(88);
+		lista.inserir(92);
+		lista.inserir(95);
+		lista.inserir(98);
+		assertEquals(5, lista.buscar(75));
+	}
+	
+	@Test
+	void test_prova_caso08() {
+		ListaEstatica<Integer> lista = new ListaEstatica<Integer>();
+		lista.inserir(1);
+		lista.inserir(7);
+		lista.inserir(20);
+		lista.inserir(28);
+		lista.inserir(33);
+		lista.inserir(43);
+		lista.inserir(55);
+		lista.inserir(62);
+		lista.inserir(66);
+		lista.inserir(75);
+		lista.inserir(98);
+		assertEquals(-1, lista.buscar(35));
+	}
 
 }

@@ -52,7 +52,6 @@ public class ListaOrdenada<T extends Comparable<T>> extends ListaAbstract<T> {
 		
 		while (inicio <= fim) {
 			meio = (inicio + fim) / 2;
-			
 			int comparacao = valor.compareTo((T)info[meio]);
 			if (comparacao < 0) {
 				fim = meio - 1;
