@@ -20,9 +20,30 @@ public class NoMapa<T> {
 	public void setInfo(T info) {
 		this.info = info;
 	}
-	
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + chave;
+		return result;
+	}
+
+	@SuppressWarnings("rawtypes")
 	@Override
 	public boolean equals(Object obj) {
-		return true;//TODO: lógica disso aqui
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		NoMapa other = (NoMapa) obj;
+		if (chave != other.chave)
+			return false;
+		return true;
 	}
+
+	
+	
 }
